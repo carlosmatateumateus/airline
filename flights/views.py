@@ -8,3 +8,11 @@ def index(request):
     'flights':Flight.objects.all()
   }
   return render(request, 'flights/index.html', context)
+
+def flight(request, flight_id):
+  flight =  Flight.objects.get(id=flight_id)
+  context = {
+    'flight': flight,
+    'passengers': flight.passengers.all()
+  }
+  return render(request, 'flights/flight.html', context)
